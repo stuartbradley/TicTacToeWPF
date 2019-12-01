@@ -79,7 +79,7 @@ namespace TicTacToeWPF
             button.Content = player1Turn ? "X" : "O";
 
             if (!player1Turn)
-                button.Foreground = Brushes.Green;
+                button.Foreground = Brushes.Red;
 
             player1Turn ^= true;
             CheckForAWinner();
@@ -115,13 +115,27 @@ namespace TicTacToeWPF
             if (results[1] != MarkType.Free && (results[1] & results[4] & results[7]) == results[1])
             {
                 gameEnded = true;
-                Button1_0.Background = Button1_1.Background = Button2_2.Background = Brushes.Green;
+                Button1_0.Background = Button1_1.Background = Button1_2.Background = Brushes.Green;
             }
             if (results[2] != MarkType.Free && (results[2] & results[5] & results[8]) == results[2])
             {
                 gameEnded = true;
                 Button2_0.Background = Button2_1.Background = Button2_2.Background = Brushes.Green;
             }
+
+            if (results[0] != MarkType.Free && (results[0] & results[4] & results[8]) == results[0])
+            {
+                gameEnded = true;
+                Button0_0.Background = Button1_1.Background = Button2_2.Background = Brushes.Green;
+            }
+
+            if (results[2] != MarkType.Free && (results[2] & results[4] & results[6]) == results[2])
+            {
+                gameEnded = true;
+                Button2_0.Background = Button1_1.Background = Button0_2.Background = Brushes.Green;
+            }
+
+
 
 
 
